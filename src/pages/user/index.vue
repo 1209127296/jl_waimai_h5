@@ -69,18 +69,18 @@
               title="个人资料"
               is-link
             >-->
-              <view slot="icon">
+              <!-- <view slot="icon">
                 <van-icon
                   name="friends"
                   class="myIcon"
                   custom-style="line-height: 24px;"
                 />
               </view>
-            </van-cell>
+            </van-cell> -->
           </van-cell-group>
         </div>
       </div>
-      <jlfooter :index="this.$root.$mp.query.index"></jlfooter>
+      <jlfooter></jlfooter>
     </div>
 </template>
 
@@ -105,7 +105,7 @@
       }
     },
     mounted () {
-     console.log(this.$root.$mp.query.index)
+     console.log(this.$router.history.current.query)
     },
     data(){
       return {

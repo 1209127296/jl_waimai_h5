@@ -5,7 +5,7 @@ import 'vant/lib/index.css'
 
 // create an axios instance
 const service = axios.create({
-  //baseURL: process.env.BASE_API, // api的base_url
+  baseURL: "https://wm.iooint.com/jl_wm", // api的base_url
   timeout: 30000 // request timeout
 })
 
@@ -13,8 +13,7 @@ const service = axios.create({
 service.interceptors.request.use(
   request => {
     request.headers = {
-      "X-Tag": "flyio",
-      'Cookie': cookie.loginCookie,
+
       'content-type': 'application/json;charset=utf-8'
     };
     // console.log('请求token:'+store.state.token)
@@ -33,11 +32,11 @@ service.interceptors.request.use(
       "sign": "string"*/
     };
   
-    request.body && Object.keys(request.body).forEach((val) => {
-      if(request.body[val] === ""){
-        delete request.body[val]
-      };
-    });
+    // request.body && Object.keys(request.body).forEach((val) => {
+    //   if(request.body[val] === ""){
+    //     delete request.body[val]
+    //   };
+    // });
     request.body = {
       ...request.body,
       ...authParams

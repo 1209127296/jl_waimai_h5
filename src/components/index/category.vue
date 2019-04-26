@@ -6,7 +6,7 @@
     <van-col span="6">span: 8</van-col>
   </van-row>-->
   <div class="category">
-    <div class="categoryItem" v-for="(value,index) in categoryData" :key="index" :cid="value.id" @click="toUrl('/pages/search/main?isSearch=0&category_id='+value.id)">
+    <div class="categoryItem" v-for="(value,index) in categoryData" :key="index" :cid="value.id" @click="toUrl('search',value.id)">
       <img :src="url+value.images" :alt="value.name">
       <div class="name">{{value.name}}</div>
     </div>
@@ -16,16 +16,22 @@
 <script>
   export default {
     name: "category",
-    props: ["categoryData"],
+    props: {
+      categoryData:Array
+    },
     watch: {
       "categoryData": function(val) {
       }
     },
     methods: {
-      toUrl: function(url) {
-        wx.navigateTo({
-          url: url
-        });
+      toUrl: function(url,id) {
+        this.$router.push({
+          path:url,
+          query:{
+            isSearch:0,
+            category_id:id
+          }
+        })
       }
     },
     data: function() {

@@ -1,5 +1,5 @@
 <template>
-  <van-tabbar :active="active"   @change="onChange">
+  <van-tabbar v-model="active"   @change="onChange">
     <van-tabbar-item icon="home-o">首页</van-tabbar-item>
     <van-tabbar-item icon="cart-o" >订单</van-tabbar-item>
     <van-tabbar-item icon="friends-o" >我的</van-tabbar-item>
@@ -20,25 +20,29 @@
       }
     },
     beforeMount(){
-     this.active =  this.$root.$mp.query.index
+     this.active =  this.$router.history.current.query.index
     },
     methods:{
       onChange(event) {
-        console.log(event.mp.detail);
-        switch (event.mp.detail) {
+        console.log(event);
+        let path="";
+        switch (event) {
           case  0:
-            var url = "/pages/index/main?index="+event.mp.detail
-            wx.redirectTo({url})
+            path="index";
             break;
           case 1:
-            var url = "/pages/order/main?index="+event.mp.detail
-            wx.redirectTo({url})
+            path="order"
             break;
           case 2:
-            var url = "/pages/user/main?index="+event.mp.detail
-            wx.redirectTo({url})
+            path="user";
             break;
         }
+        this.$router.replace({
+          path:path,
+          query:{
+            index:event
+          }
+        })
       },
     }
   };

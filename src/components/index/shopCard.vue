@@ -49,7 +49,7 @@
 <script>
   export default {
     name: "shopCard",
-    props:['shop','allShop'],
+    props:['shop'],
     data(){
       return{
         url:this.$url,

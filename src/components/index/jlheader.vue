@@ -56,6 +56,7 @@
 
 }
 .addressBox{
+  text-align: left;
   font-size: 14px;
   margin-bottom: 10px;
 }

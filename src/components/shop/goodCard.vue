@@ -34,7 +34,6 @@
 
 <script>
 
-  import cookie from '../saveCookie.js'
 
   export default {
     name: "goodCard",
